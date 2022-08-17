@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Enlighten</title>
+
+</head>
+<body class="bookspage">
+    <header>
+        <nav>
+            <h1 class='logo'><a href="/">Enlighten</a></h1>
+            <ul>
+              <li><a href='/books.html'>Books</a></li>
+              <li><a href='/about.html'>About</a></li>
+              <!-- <li><a href='/learn.html'>Learn more</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    <section class='add'>
+        <input type="file" class="file" id="file"></input>
+        <button id="upload_book">Add Book</button>
+    </section>
+    <p id="status"></p>
+    <section class='pagecontent'>
+        <h3>All Books</h3>
+        <div class='books_container'>
+           
+        </div>
+    </section>
+    <footer>
+        Enlighten &copy;2022 All right reserved
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.min.js"></script>
+    <script src="./book.js" type="module"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" ></script>
+</body>
+</html>

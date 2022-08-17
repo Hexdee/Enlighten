@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <link rel="stylesheet" href="book.css">
+    </head>
+    <body>
+        <button id="show-pdf-button">Show PDF</button> 
+
+        <div id="pdf-main-container">
+	        <div id="pdf-loader">Loading document ...</div>
+	        <div id="pdf-contents">
+		        <div id="pdf-meta">
+			        <div id="pdf-buttons">
+				        <button id="pdf-prev">Previous</button>
+				        <button id="pdf-next">Next</button>
+			        </div>
+			        <div id="page-count-container">Page <div id="pdf-current-page"></div> of <div id="pdf-total-pages"></div></div>
+		        </div>
+		        <canvas id="pdf-canvas" width="400"></canvas>
+		        <div id="page-loader">Loading page ...</div>
+	        </div>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.min.js"></script>
+    <script src="./script.js"></script>
+</html>

@@ -1,0 +1,259 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  .bookspage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  body {
+    margin: 0;
+    background-color: lightblue;
+  }
+
+  .homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .mybooks .pagecontent {
+    flex: 1;
+  }
+
+  a, a:hover, a:visited {
+    text-decoration: none;
+  }
+  
+  .header {
+    background-image: url("./images/books.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-color: #554994;
+    height: 100vh;
+    padding: 0 32px;
+    text-align: center;
+  }
+  
+  .header > h1 {
+    font-size: 60px;
+    text-shadow: 3px 3px #554994;
+    font-style: italic;
+    margin: 0;
+    padding-top: 80px;
+    color: lightblue;
+    justify-self: center;
+  }
+  
+  .header > p {
+    margin: 0 16px;
+    font-style: italic;
+    font-weight: 500;
+    color: lightblue;
+  }
+  
+  nav {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    justify-content: space-between;
+    background-color: transparent;
+  }
+  
+  nav h1 {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    font-style: italic;
+    font-weight: 900;
+    color: lightblue;
+    cursor: pointer;
+  }
+
+  .bookspage nav h1{
+    color: #554994;
+  }
+  
+  nav ul {
+    min-width: 100px;
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    font-weight: 700;
+  }
+  
+  li a {
+      text-decoration: none;
+      cursor: pointer;
+      color: lightblue;
+    }
+
+  a:visited {
+    color: lightblue;
+  }
+  
+  .bookspage li a, .bookspage a:visited {
+    color: #554994;
+  }
+  
+  
+  .mybooks {
+    padding: 20px;
+    color: #554994;
+    background-color: lightblue;
+  }
+  
+  .mybooks a:visited {
+    color: #554994;
+  }
+  
+  .mybooks_heading {
+    display: flex;
+    margin: 0 5%;
+    justify-content: space-between;
+  }
+  
+  .books_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+    padding: 16px;
+  }
+  
+  .book {
+    width: 250px;
+    border-radius: 4px;
+    margin: 20px;
+  }
+
+  .book h3 {
+    text-align: center;
+}
+
+.book canvas {
+    background-color: lightgray;
+    width: 100%;
+    height: 300px;
+    border-radius: 4px;
+  }
+
+  .book:hover canvas {
+    box-shadow: 4px 4px 8px 8px;
+  }
+  
+  .add_book {
+    min-width: 350px;
+    max-width: 500px;
+    margin: 32px auto;
+    background-color: #554994;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+  
+  button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #F675A8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button a:visited {
+    color: white;
+  }
+  
+  button:hover {
+    opacity: 90%;
+  }
+  
+  footer {
+    justify-self: flex-end;
+    color: white;
+    background-color: #554994;
+    padding: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .pagecontent {
+    flex: 1;
+    color: #554994;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .pagecontent > h3 {
+    font-size: 30px;
+  }
+  
+  .books {
+    background-color: lightblue;
+  }
+  
+  .books h3 {
+    text-align: center;
+    color: #554994;
+    font-size: 30px;
+  }
+  
+  .add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .add {
+    background-color: #554994;
+    color: white;
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  #status {
+    text-align: center;
+    color: #554994;
+    font-weight: 700;
+  }
+
+  .books_container {
+    
+  }
+
+  /* .header > h1 {
+    color: white;
+  } */
+  @media only screen and (min-width: 500px) {
+    .header > h1 {
+        font-size: 160px;
+        padding-top: 100px;
+    }
+    .header {
+        background-position: right;
+        text-align: left;
+    }
+    .nav {
+        flex-wrap: nowrap;
+    }
+  }
