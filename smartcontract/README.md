@@ -3,7 +3,7 @@
 This smart contract stores all books uploaded to Enlighten and also mint them as NFTs
 
 ### secret.json
-Provide your API keys and private key in `secret.json`
+Provide your API keys and private key in [secret.json](https://github.com/Hexdee/Enlighten/blob/main/smartcontract/secret.json)
 
 ### Compile smart contract
 
