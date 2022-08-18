@@ -1,13 +1,27 @@
-# Sample Hardhat Project
+# Books
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+This smart contract stores all books uploaded to Enlighten and also mint them as NFTs
 
-Try running some of the following tasks:
+### secret.json
+Provide your API keys and private key in `secret.json`
 
-```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
+### Compile smart contract
+
+```bash
+npx hardhat compile
+```
+
+### Deploy smart contract
+
+This would deploy the smart and display the contract address
+
+```bash
 npx hardhat run scripts/deploy.js
+```
+
+### Verify contract
+Be sure to replace `YOUR_CONTRACT_ADDRESS` with the contract address you got after deploying the Smart Contract
+
+```bash
+npx hardhat verify `YOUR_CONTRACT_ADDRESS`
 ```
