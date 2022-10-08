@@ -1,12 +1,12 @@
 //Api tokens and private key
-const token = "";
-const API_KEY = "";
-const private_key = "";
+const API_KEY = "8240e5368feb46af698cc4a178ec7859e91c23d1";
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEVDZTNiOTIxQzM4YjZmMUY5QzUzRThGNDMyMjc0MmM4MDk0MzU2NzQiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2MDY2NzMyMDIwOCwibmFtZSI6IkVubGlnaHRlbiJ9.-_v_zFU7e-DU5vhu8thYtiCCvem9NULxNf43YSBYV18';
+const private_key = "2e5851f63e6787aeb26e664381c5c61ac49a7c26a800d08e4520eed418356506";
 
 //Pin on ipfs using nft.storage
 import { NFTStorage, File } from "https://cdn.jsdelivr.net/npm/nft.storage/dist/bundle.esm.min.js";
 const endpoint = 'https://api.nft.storage'
-const booksAddress = "0xF8906eeD015474109B2a1f1d0F302c908f5fE392";
+const booksAddress = "0x1cE6Ec9939fa81b10E4F3130Ae4da6021557Afd5";
 const booksAbi = [
     // "function getBooks() view returns (string[])",
     // "functions addBook(string memory uri, string memory book)"
@@ -62,10 +62,13 @@ const getBooks = async (amount) => {
     const container = document.querySelector(".books_container"); 
     displayBooks(container);
     try {
-        const provider = new ethers.providers.JsonRpcProvider(`https://rpc-mumbai.maticvigil.com/v1/${API_KEY}`);
+        const provider = new ethers.providers.JsonRpcProvider("https://testnet-rpc.coinex.net");
         var signer = new ethers.Wallet(private_key, provider);
+        console.log(signer)
         // console.log(signer)
         const booksContract = new ethers.Contract(booksAddress, booksAbi, signer);
+        console.log("book contract", booksContract);
+        console.log(await booksContract.getBooks());
         let new_books = await booksContract.getBooks();
         console.log(new_books);
         // Reload if there is a new book
@@ -138,16 +141,16 @@ const addFile = async() => {
 
         try {
             status.innerText = "Minting book as NFT...";
-            const provider = new ethers.providers.JsonRpcProvider(`https://rpc-mumbai.maticvigil.com/v1/022fd3cf836ccc65239550879cee7094077e1578`);
+            const provider = new ethers.providers.JsonRpcProvider(`https://testnet-rpc.coinex.net`);
             var signer = new ethers.Wallet(private_key, provider);
             // console.log(signer)
             const booksContract = new ethers.Contract(booksAddress, booksAbi, signer);
-            console.log("book: ", url, book_metadata.data.image.href);
-            console.log("book contract: ", booksContract)
+            console.log("book: ", book_metadata.data.image.href);
             const tx = await booksContract.addBook(url, book_url);
             console.log("Transaction sent, waiting for confirmation");
             await tx.wait();
-            console.log("Transaction confirmed")
+            console.log("Transaction confirmed");
+            window.location.reload();
         } catch (error) {
             console.log(error)
             // alert("An error occured while adding books!");
