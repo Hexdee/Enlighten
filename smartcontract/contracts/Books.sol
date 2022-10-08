@@ -15,8 +15,8 @@ contract Books is ERC721, ERC721URIStorage, Ownable {
 
     constructor() ERC721("Books", "BOOKS") {}
 
-    function addBook(string memory uri, string memory book) public {
-	books.push(book);
+    function addBook(string memory uri) public {
+	    books.push(uri);
         safeMint(msg.sender, uri);
     }
 

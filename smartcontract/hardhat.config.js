@@ -3,18 +3,31 @@ var secret = require("./secret.json");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.9",
+  solidity: "0.8.6",
 
-  defaultNetwork: "mumbai",
+  defaultNetwork: "testnet",
   networks: {
     hardhat: {
     },
-    mumbai: {
-      url: `https://rpc-mumbai.maticvigil.com/v1/${secret.APP_ID}`,
-      accounts: [secret.PRIVATE_KEY1, secret.PRIVATE_KEY2 ]
-    }
+    testnet: {
+      url: "https://testnet-rpc.coinex.net",
+      accounts: [`0x` + secret.PRIVATE_KEY],
+      chainId: 53,
+    },
   },
   etherscan: {
-    apiKey: secret.POLYGONSCAN_API_KEY
+    apiKey: {
+      testnet: secret.COINEXSCAN_API_KEY
+    },
+    customChains: [
+      {
+        network: "testnet",
+        chainId: 53,
+        urls: {
+          apiURL: "https://testnet.coinex.net/api/v1",
+          browserURL: "https://testnet.coinex.net"
+        }
+      }
+    ]
   }
 }
