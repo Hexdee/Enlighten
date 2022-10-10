@@ -14,20 +14,5 @@ module.exports = {
       accounts: [`0x` + secret.PRIVATE_KEY],
       chainId: 53,
     },
-  },
-  etherscan: {
-    apiKey: {
-      testnet: secret.COINEXSCAN_API_KEY
-    },
-    customChains: [
-      {
-        network: "testnet",
-        chainId: 53,
-        urls: {
-          apiURL: "https://testnet.coinex.net/api/v1",
-          browserURL: "https://testnet.coinex.net"
-        }
-      }
-    ]
   }
 }
