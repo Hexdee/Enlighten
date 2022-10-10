@@ -1,6 +1,8 @@
 # Enlighten
 Enlighten is an open library on IPFS
 
+[Live preview](https://3nlighten.netlify.app/)
+
 ### Features
 - All users can add books to the library
 - All users can get books from the library
