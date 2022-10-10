@@ -57,7 +57,9 @@ const getBooks = async (amount) => {
         // console.log(new_books);
         // Reload if there is a new book
         if (new_books) {
-            localStorage.setItem("books", JSON.stringify(new_books));
+            // Reverse books to show the most recent first
+            let reverse_books = [...new_books].reverse();
+            localStorage.setItem("books", JSON.stringify(reverse_books));
             if (books.length != new_books.length) {
                 location.reload();
             }
