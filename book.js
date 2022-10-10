@@ -1,15 +1,12 @@
 //Api tokens and private key
-const API_KEY = "";
-const token = '';
-const private_key = "";
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEVDZTNiOTIxQzM4YjZmMUY5QzUzRThGNDMyMjc0MmM4MDk0MzU2NzQiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY2MDY2NzMyMDIwOCwibmFtZSI6IkVubGlnaHRlbiJ9.-_v_zFU7e-DU5vhu8thYtiCCvem9NULxNf43YSBYV18";
+const private_key = "2e5851f63e6787aeb26e664381c5c61ac49a7c26a800d08e4520eed418356506";
 
 //Pin on ipfs using nft.storage
 import { NFTStorage, File } from "https://cdn.jsdelivr.net/npm/nft.storage/dist/bundle.esm.min.js";
 const endpoint = 'https://api.nft.storage'
-const booksAddress = "0x1cE6Ec9939fa81b10E4F3130Ae4da6021557Afd5";
+const booksAddress = "0x30Aa6f639959d7Cf0C794f56668c6d412fFfeE11";
 const booksAbi = [
-    // "function getBooks() view returns (string[])",
-    // "functions addBook(string memory uri, string memory book)"
     {
         "inputs": [],
         "name": "getBooks",
@@ -29,11 +26,6 @@ const booksAbi = [
             "internalType": "string",
             "name": "uri",
             "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "book",
-            "type": "string"
           }
         ],
         "name": "addBook",
@@ -49,10 +41,6 @@ var file;
 // Links would later be store in a smart contract
 var books = [];
 const getBooks = async (amount) => {
-    // books = [
-    //     'bafybeib7ig7hsiunsav33ztxe2tzauv4hwbgk27chajz42pq3ccqfsrsuu/Eloquent_JavaScript.pdf',
-    //     'bafybeif2xeyg7f4kv5bqmq4r4ees6mhq5c5puidjkg6hnak34zrwhys4t4/Do the Work by Steven Pressfield ( PDFDrive ).pdf'
-    // ];
     if (localStorage.getItem("books")) {
      books = JSON.parse(localStorage.getItem("books"))
      if (amount) {
@@ -64,13 +52,9 @@ const getBooks = async (amount) => {
     try {
         const provider = new ethers.providers.JsonRpcProvider("https://testnet-rpc.coinex.net");
         var signer = new ethers.Wallet(private_key, provider);
-        console.log(signer)
-        // console.log(signer)
         const booksContract = new ethers.Contract(booksAddress, booksAbi, signer);
-        console.log("book contract", booksContract);
-        console.log(await booksContract.getBooks());
         let new_books = await booksContract.getBooks();
-        console.log(new_books);
+        // console.log(new_books);
         // Reload if there is a new book
         if (new_books) {
             localStorage.setItem("books", JSON.stringify(new_books));
@@ -136,7 +120,6 @@ const addFile = async() => {
             image: file
         })
 
-        const url = book_metadata.url;
         const book_url = book_metadata.data.image.href;
 
         try {
@@ -145,8 +128,7 @@ const addFile = async() => {
             var signer = new ethers.Wallet(private_key, provider);
             // console.log(signer)
             const booksContract = new ethers.Contract(booksAddress, booksAbi, signer);
-            console.log("book: ", book_metadata.data.image.href);
-            const tx = await booksContract.addBook(url, book_url);
+            const tx = await booksContract.addBook(book_url);
             console.log("Transaction sent, waiting for confirmation");
             await tx.wait();
             console.log("Transaction confirmed");
@@ -163,7 +145,7 @@ const addFile = async() => {
         console.log(saved_books);
         localStorage.setItem("books", JSON.stringify(saved_books));
         alert("Book successfully added to the library!");
-        // location.reload();
+        window.location.reload();
     }
     else {
         alert("Please choose a pdf file first");
