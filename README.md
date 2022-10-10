@@ -1,6 +1,8 @@
 # Enlighten
 Enlighten is an open library on Coinex Smart Chain
+
 [Live preview](https://enlighten-gamma.vercel.app)
+
 [Verified contract](https://testnet.coinex.net/address/0x30Aa6f639959d7Cf0C794f56668c6d412fFfeE11#code)
 
 ### Features
